@@ -13,6 +13,24 @@ class Expr{
 
 typedef list<Expr *> ExprList;
 
+class CallExpr:public Expr{
+    public:
+        CallExpr(string name){
+            this->name=name;
+        }
+        string name;
+        float evaluate();
+};
+
+class CallMethExpr:public Expr{
+    public:
+        CallMethExpr(string name){
+            this->name=name;
+        }
+        string name;
+        float evaluate();
+};
+
 class BinaryExpr: public Expr{
     public:
         BinaryExpr(Expr* exp1, Expr* exp2){
@@ -22,7 +40,42 @@ class BinaryExpr: public Expr{
         Expr* exp1;
         Expr* exp2;
 };
+class AssigExpr: public Expr{
+    public:
+        AssigExpr(string name, Expr* exp){
+            this->name=name;
+            this->exp=exp;
+        }
+        string name;
+        Expr* exp;
+        float evaluate();
+};
 
+class AssigMethExpr: public Expr{
+    public:
+        AssigMethExpr(string name, Expr* exp){
+            this->name=name;
+            this->exp=exp;
+        }
+        string name;
+        Expr* exp;
+        float evaluate();
+};
+
+class GreaterExpr: public BinaryExpr{
+    public:
+        GreaterExpr(Expr* exp1, Expr* exp2):BinaryExpr(exp1,exp2){
+
+        }
+        float evaluate();
+};
+class LessExpr: public BinaryExpr{
+    public:
+        LessExpr(Expr* exp1, Expr* exp2):BinaryExpr(exp1,exp2){
+
+        }
+        float evaluate();
+};
 class AddExpr: public BinaryExpr{
     public:
         AddExpr(Expr* exp1, Expr* exp2):BinaryExpr(exp1,exp2){

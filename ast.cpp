@@ -12,6 +12,7 @@ float AssigExpr::evaluate(){
         globalVariables[this->name]=this->exp;
         return 1;
     }else if(globalVariables[this->name]!=0){
+        globalVariables[this->name]=this->exp;
         return 0;
     }else{
         globalVariables[this->name]=this->exp;

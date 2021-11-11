@@ -47,7 +47,7 @@ asignation:LET STRING '=' expp {
         }
         $$= asig;
         }
-    |LET STRING '('params')' '=' expp {
+    |LET STRING '('params')' '=' expp';' {
         Expr* asig=new AssigMethExpr($2,$7);
         if(asig->evaluate()==1){
             printf("Method %s declarada\n",$2);
@@ -109,7 +109,8 @@ factor: factor MUL term { $$ = new MulExpr($1,$3); }
     ;
 
 term: NUMBER { $$ = new NumExpr($1); }
-    | STRING '('params ')' { $$ = new CallMethExpr($1);}
+    | STRING '('params')' { $$ = new CallMethExpr($1);}
     | STRING { $$ = new CallExpr($1);}
     ;
+
 %%

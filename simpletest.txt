@@ -1,6 +1,6 @@
 2+4
 let x=7
-let y()= 2+1
+let y(e,r,t)= x+1;
 x-3
 2-2
 y()
